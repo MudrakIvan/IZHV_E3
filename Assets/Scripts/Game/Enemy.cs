@@ -74,9 +74,19 @@ public class Enemy : MonoBehaviour
             return;
         }
         
+        var enemyToPlayer = player.transform.position - transform.position;
+        
+        // Allow only rotation in the XZ plane (play area).
+        enemyToPlayer.y = 0.0f;
+        enemyToPlayer.Normalize();
+
         mRigidBody.MovePosition(
             transform.position + 
-            Vector3.Normalize(player.transform.position - transform.position) * speed * Time.deltaTime
+            enemyToPlayer * speed * Time.deltaTime
+        );
+
+        mRigidBody.MoveRotation(
+            Quaternion.LookRotation(enemyToPlayer)
         );
     }
 
