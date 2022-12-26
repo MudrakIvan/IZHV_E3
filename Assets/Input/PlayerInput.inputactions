@@ -925,6 +925,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "M&K",
+            "bindingGroup": "M&K",
+            "devices": []
         }
     ]
 }
